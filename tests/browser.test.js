@@ -32,3 +32,35 @@ describe('Clicking "Pusha till stacken"', () => {
 		await alert.accept();
 	});
 });
+
+describe('Using "Pusha till stacken" and "Poppa stacken"', () => {
+	it('should remove top item from stack', async () => {
+    const push = await driver.findElement(By.id('push'));
+    const pop = await driver.findElement(By.id('pop'));
+    const peek = await driver.findElement(By.id('peek'));
+    const topOfStack = await driver.findElement(By.id('top_of_stack'));
+
+    await push.click();
+    let alert = await driver.switchTo().alert();
+    await alert.sendKeys("Grejer");
+    await alert.accept();
+
+    await driver.wait(until.elementTextContains(topOfStack, "Grejer"), defaultTimeout);
+
+    await push.click();
+    alert = await driver.switchTo().alert();
+    await alert.sendKeys("Mer grejer");
+    await alert.accept();
+
+		await driver.wait(until.elementTextContains(topOfStack, "Mer grejer"), defaultTimeout);
+    
+    await pop.click();
+    alert = await driver.switchTo().alert();
+    await alert.accept();  
+
+    await peek.click();
+    const stackContent = await topOfStack.getText();
+    expect(stackContent).toEqual('Grejers');
+	});
+});
+

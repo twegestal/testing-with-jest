@@ -17,3 +17,11 @@ test('peek on stack with two or more elements returns the top element', () => {
   expect(stack.peek()).toBeDefined();
   expect(stack.peek()).toBe(42);
 });
+
+test('pop on stack with multiple elements removes the top element', () => {
+  stack.push('grejer');
+  stack.push('ännu mer grejer');
+  stack.push('är det inte nog snart?');
+  expect(stack.pop()).toBe('är det inte nog snart?');
+  expect(stack.peek()).toBe('ännu mer grejers');
+})
