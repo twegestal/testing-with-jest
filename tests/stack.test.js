@@ -23,5 +23,5 @@ test('pop on stack with multiple elements removes the top element', () => {
   stack.push('ännu mer grejer');
   stack.push('är det inte nog snart?');
   expect(stack.pop()).toBe('är det inte nog snart?');
-  expect(stack.peek()).toBe('ännu mer grejers');
+  expect(stack.peek()).toBe('ännu mer grejer');
 })

@@ -60,7 +60,7 @@ describe('Using "Pusha till stacken" and "Poppa stacken"', () => {
 
     await peek.click();
     const stackContent = await topOfStack.getText();
-    expect(stackContent).toEqual('Grejers');
+    expect(stackContent).toEqual('Grejer');
 	});
 });
 
